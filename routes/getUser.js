@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // controllers
-const { mysql_connection } = require('../controllers/mysql_connection')
+const { getOperation } = require('../controllers/getOperation')
 
-router.get('/', mysql_connection)
+router.post('/', getOperation)
 
 module.exports = router

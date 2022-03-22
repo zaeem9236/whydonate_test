@@ -3,7 +3,7 @@ const { mysql_configuration } = require('../mysql_configuration/mysql_configurat
 
 const mysql_connection = (req, res, next) => {
     const db = mysql.createConnection(mysql_configuration);
-    db.ping((err) => { // my sql connection ping response
+    db.ping((err) => { // my sql connection ping
         if (err) {
             res.status(500).send(err)
         } else {
