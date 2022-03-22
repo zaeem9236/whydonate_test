@@ -1,15 +1,9 @@
 const mysql = require('mysql');
+const { mysql_configuration } = require('../mysql_configuration/mysql_configuration')
 
-const initialise_db = (req, res, next) => {
-    const db = mysql.createConnection({
-        host: 'sql6.freemysqlhosting.net',
-        user: 'sql6479699',
-        password: 'aCsPAuKquz',
-        database: 'sql6479699',
-        port: 3306
-    });
-
-    db.connect(function (err) {
+const initialise_db = (req, res, next) => { // initialise database when server starts
+    const db = mysql.createConnection(mysql_configuration);
+    db.connect(function (err) { // console message of server initial connection
         if (err) {
             console.log('failed to initialise')
         } else {
@@ -17,8 +11,7 @@ const initialise_db = (req, res, next) => {
         }
     })
 
-
-  
+    
 }
 
 module.exports = { initialise_db }

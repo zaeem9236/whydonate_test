@@ -1,21 +1,14 @@
 const mysql = require('mysql');
+const { mysql_configuration } = require('../mysql_configuration/mysql_configuration')
 
 const mysql_connection = (req, res, next) => {
-    const db = mysql.createConnection({
-        host: 'sql6.freemysqlhosting.net',
-        user: 'sql6479699',
-        password: 'aCsPAuKquz',
-        database: 'sql6479699',
-        port: 3306
-    });
-
-    db.connect(function (err) {
+    const db = mysql.createConnection(mysql_configuration);
+    db.ping((err) => { // my sql connection ping response
         if (err) {
             res.status(500).send(err)
         } else {
-            res.status(500).send({ status: 'database connection established' })
+            res.status(500).send({ status: 'database connection is established' })
         }
-        next()
     })
 }
 

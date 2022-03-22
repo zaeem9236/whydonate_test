@@ -9,7 +9,7 @@ const connect = require('./routes/connect.js');
 const {initialise_db} = require('./controllers/initialise_db'); 
 
 
-app.use('/', connect) // run root route
+app.use('/', connect) // connect route
 
 app.get('*', (req, res) => { // run error message on invalid/undefined route
     res.status(404).send({ message: 'invalid Request', status: '400' })
